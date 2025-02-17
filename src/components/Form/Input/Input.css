@@ -1,0 +1,19 @@
+input,
+label {
+  display: flex;
+}
+
+label {
+  font-size: larger;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#countyName {
+  margin: auto;
+  padding: 20px;
+  width: 90%;
+  border-radius: 30px;
+  border: none;
+  font-size: larger;
+}

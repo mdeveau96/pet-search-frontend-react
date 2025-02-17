@@ -1,0 +1,43 @@
+.button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #87CEEB;
+  cursor: pointer;
+  color: #ffffffde;
+  transition: background-color 0.25s;
+  margin: 10px;
+}
+
+.button:hover {
+  background-color: #87CEEBab;
+  color: #ffffffde;
+}
+
+.button:active,
+.button:focus {
+  background-color: #87CEEB7e;
+  color: #ffffffde;
+}
+
+.button--lost {
+  background-color: #ff4b4b;
+  color: #ffffffde;
+}
+.button--lost:hover {
+  background-color: #ff4b4bab;
+  color: #ffffffde;
+}
+
+.button--lost:active,
+.button--lost:focus {
+  background-color: #ff4b4b7e;
+  color: #ffffffde;
+}
+
+.button--submit {
+  width: 80%;
+}
