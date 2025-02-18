@@ -10,6 +10,7 @@ interface InputProps {
   placeHolder: string;
   required: boolean;
   valid?: boolean;
+  onchange: () => void
 }
 
 export default function Input({
