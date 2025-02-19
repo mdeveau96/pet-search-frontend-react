@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import "./Button.css";
+import { ReactNode } from "react";
 
 interface ButtonProps {
   link?: string;
@@ -9,10 +10,10 @@ interface ButtonProps {
   disabled?: boolean;
   loading?: boolean;
   type?: "button" | "submit" | "reset";
-  children?: any;
+  children?: ReactNode;
 }
 
-export function Button({
+export default function Button({
   link,
   design,
   mode,
@@ -26,7 +27,7 @@ export function Button({
     <button
       className={["button", `button--${design}`, `button--${mode}`].join(" ")}
       onClick={onClick}
-      disabled={disabled || loading}
+      disabled={disabled ?? loading}
       type={type}
     >
       {loading ? "Loading..." : children}

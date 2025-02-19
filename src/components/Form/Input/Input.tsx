@@ -1,3 +1,4 @@
+import { useState, ChangeEvent } from "react";
 import "./Input.css";
 
 interface InputProps {
@@ -5,12 +6,13 @@ interface InputProps {
   name: string;
   label: string;
   type: string;
+  rows?: number;
   control: string;
   value?: string;
   placeHolder: string;
   required: boolean;
   valid?: boolean;
-  onchange: () => void
+  onChange: (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export default function Input({
@@ -18,12 +20,27 @@ export default function Input({
   name,
   label,
   type,
+  rows,
   control,
-  value,
   placeHolder,
   required,
   valid,
+  onChange
 }: InputProps) {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
+    setInputValue(newValue);
+    onChange(event);
+  };
+
+  const handleChangeTextArea = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const newValue = event.target.value;
+    setInputValue(newValue);
+    onChange(event);
+  };
+
   return (
     <div className="input">
       {label && <label htmlFor={id}>{label}</label>}
@@ -34,17 +51,20 @@ export default function Input({
           id={id}
           name={name}
           required={required}
-          value={value}
+          value={inputValue}
           placeholder={placeHolder}
+          onChange={handleChange}
         />
       )}
       {control === "textarea" && (
         <textarea
           className={[!valid ? "invalid" : "valid"].join(" ")}
           id={id}
+          rows={rows}
           required={required}
-          value={value}
+          value={inputValue}
           placeholder={placeHolder}
+          onChange={handleChangeTextArea}
         />
       )}
     </div>

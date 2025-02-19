@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Button } from "../../components/Button/Button";
+import { ChangeEvent, useState } from "react";
+import Button from "../../components/Button/Button";
 import Input from "../../components/Form/Input/Input";
 
 export default function NewLostPet() {
@@ -7,22 +7,30 @@ export default function NewLostPet() {
     title: string;
     imageUrl: string;
     content: string;
-    county: string;
+    cityName: string;
   }
 
   const [post, setPost] = useState<Post>({
     title: "",
     imageUrl: "",
     content: "",
-    county: "",
+    cityName: "",
   })
 
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
+    const {name, value } = e.target;
+    setPost((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  }
+
   const createPost = async (formData: FormData) => {
-    const county = formData.get("countyName") as string;
+    const cityName = formData.get("countyName") as string;
     const title = formData.get("title") as string;
     const imageUrl = formData.get("imageUrl") as string;
     const content = formData.get("content") as string;
-    const post: Post = {title: title, imageUrl: imageUrl, content: content, county: county}
+    const post: Post = {title: title, imageUrl: imageUrl, content: content, cityName: cityName}
     try {
       const response = await fetch("http://localhost:8080/feed/post", {
         method: "POST",
@@ -44,31 +52,50 @@ export default function NewLostPet() {
 
   return (
     <>
-      <form className="county" action={createPost}>
-        
-        <Input
-          id="countyName"
-          name="countyName"
-          label="What county did your pet going missing in?"
-          type="text"
-          control="input"
-          placeHolder="What county do you live in?"
-          required={true}
-          value={post.county}
-          onChange={e => {
-            setPost({
-              ...post,
-              county: e.target.value
-            })
-          }}
-        />
-        <Button design="submit" type="submit">
-          Submit
-        </Button>
-        {postData && (
-          <h1>{postData.title}</h1>
-        )}
-      </form>
+      <div className="container">
+        <form className="newPost" action={createPost}>
+          <Input
+            id="countyName"
+            name="countyName"
+            label="What city and state did your pet going missing in?"
+            type="text"
+            control="input"
+            placeHolder="Ex. Los Angeles, CA"
+            required={true}
+            value={post.cityName}
+            onChange={handleInputChange}
+          />
+          <Input
+            id="title"
+            name="title"
+            label="Tell us a little bit about your pet"
+            type="text"
+            control="input"
+            placeHolder="Species, breed, color, size, etc."
+            required={true}
+            value={post.title}
+            onChange={handleInputChange}
+          />
+          <Input
+            id="content"
+            name="content"
+            label="Any more information that can help others"
+            type="text"
+            control="textarea"
+            placeHolder=""
+            rows={10}
+            required={true}
+            value={post.content}
+            onChange={handleInputChange}
+          />
+          <Button design="submit" type="submit">
+            Submit
+          </Button>
+        </form>
+        <div className="post-preview">
+          {post.cityName}
+        </div>
+      </div>
     </>
   );
 }
