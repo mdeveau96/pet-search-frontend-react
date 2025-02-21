@@ -5,21 +5,20 @@
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #87CEEB;
+  background-color: #B57EDC;
   cursor: pointer;
   color: #ffffffde;
   transition: background-color 0.25s;
-  margin: 10px;
 }
 
 .button:hover {
-  background-color: #87CEEBab;
+  background-color: #B57EDCab;
   color: #ffffffde;
 }
 
 .button:active,
 .button:focus {
-  background-color: #87CEEB7e;
+  background-color: #B57EDC7e;
   color: #ffffffde;
 }
 
@@ -36,4 +35,9 @@
 .button--lost:focus {
   background-color: #ff4b4b7e;
   color: #ffffffde;
+}
+
+.button--submit {
+  margin-top: 20px;
+  width: 100%;
 }

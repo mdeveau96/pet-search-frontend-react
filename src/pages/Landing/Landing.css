@@ -5,3 +5,14 @@
 .title:hover {
   color: #ffffffde;
 }
+
+.container {
+  background-color: #242424;
+  padding: 20px;
+  width: fit-content;
+  border-radius: 10px;
+}
+
+.selection--container {
+  place-content: center;
+}
