@@ -1,19 +1,29 @@
 .container {
   display: flex;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
-.newPost {
-  border: 1px solid #5a5a5a;
-  border-radius: 10px;
+.new-post--form {
+  border-right: 1px solid #5a5a5a;
   padding: 10px;
-  display: flex;
+  display: inline-block;
   gap: 10px;
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
   left: 0;
+  width: 50%;
 }
 
-.post-preview {
-  border-left: 1px solid #5a5a5a;
+.post-preview--container {
+  display: inline-block;
+  margin: auto;
+  height: auto;
+  padding: 10px;
+  position: relative;
+}
+
+/* .post-preview {
+
+} */
+
+input,
+textarea {
+  width: 100%;
 }

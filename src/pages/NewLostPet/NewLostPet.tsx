@@ -1,6 +1,8 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Form/Input/Input";
+import "./NewLostPet.css"
+import Post from "../../components/Post/Post";
 
 export default function NewLostPet() {
   interface Post {
@@ -25,38 +27,36 @@ export default function NewLostPet() {
     }));
   }
 
-  const createPost = async (formData: FormData) => {
-    const cityName = formData.get("countyName") as string;
-    const title = formData.get("title") as string;
-    const imageUrl = formData.get("imageUrl") as string;
-    const content = formData.get("content") as string;
-    const post: Post = {title: title, imageUrl: imageUrl, content: content, cityName: cityName}
-    try {
-      const response = await fetch("http://localhost:8080/feed/post", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer` //Add token functionality
-        },
-        body: JSON.stringify(post)
-      })
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
-      }
-      // const data: Post = await response.json() as Post;
-      // setPostData(data)
-    } catch (error) {
-      console.error('There was an error sending the POST request:', error);
-    }
+  const createPost = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const newPost: Post = post
+    console.log(newPost)
+    // try {
+    //   const response = await fetch("http://localhost:8080/feed/post", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       "Authorization": `Bearer` //Add token functionality
+    //     },
+    //     body: JSON.stringify(post)
+    //   })
+    //   if (!response.ok) {
+    //     throw new Error(`HTTP error! status: ${response.status}`)
+    //   }
+    //   const data: Post = await response.json() as Post;
+    //   setPostData(data)
+    // } catch (error) {
+    //   console.error('There was an error sending the POST request:', error);
+    // }
   }
 
   return (
     <>
       <div className="container">
-        <form className="newPost" action={createPost}>
+        <form className="new-post--form" onSubmit={createPost}>
           <Input
-            id="countyName"
-            name="countyName"
+            id="cityName"
+            name="cityName"
             label="What city and state did your pet going missing in?"
             type="text"
             control="input"
@@ -80,7 +80,6 @@ export default function NewLostPet() {
             id="content"
             name="content"
             label="Any more information that can help others"
-            type="text"
             control="textarea"
             placeHolder=""
             rows={10}
@@ -92,8 +91,10 @@ export default function NewLostPet() {
             Submit
           </Button>
         </form>
-        <div className="post-preview">
-          {post.cityName}
+        <div className="post-preview--container">
+          <div className="post-preview">
+            <Post title={post.title} imageUrl={post.imageUrl} content={post.content} cityName={post.cityName}/>
+          </div>
         </div>
       </div>
     </>

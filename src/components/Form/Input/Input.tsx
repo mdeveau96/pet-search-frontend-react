@@ -5,7 +5,7 @@ interface InputProps {
   id: string;
   name: string;
   label: string;
-  type: string;
+  type?: string;
   rows?: number;
   control: string;
   value?: string;
@@ -60,6 +60,7 @@ export default function Input({
         <textarea
           className={[!valid ? "invalid" : "valid"].join(" ")}
           id={id}
+          name={name}
           rows={rows}
           required={required}
           value={inputValue}
