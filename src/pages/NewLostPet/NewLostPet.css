@@ -2,21 +2,25 @@
   display: flex;
 }
 
-.new-post--form {
-  border-right: 1px solid #5a5a5a;
-  padding: 10px;
-  display: inline-block;
-  gap: 10px;
-  left: 0;
+.new-post--container {
   width: 50%;
+  border-right: 1px solid #5a5a5a;
+}
+
+.new-post--form {
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  max-width: 600px;
+  margin: auto;
 }
 
 .post-preview--container {
-  display: inline-block;
-  margin: auto;
+  align-items: center;
+  width: 650px;
   height: auto;
-  padding: 10px;
-  position: relative;
+  margin: auto;
+  word-wrap: break-word;
 }
 
 /* .post-preview {

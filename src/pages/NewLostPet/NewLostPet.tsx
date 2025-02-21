@@ -53,44 +53,46 @@ export default function NewLostPet() {
   return (
     <>
       <div className="container">
-        <form className="new-post--form" onSubmit={createPost}>
-          <Input
-            id="cityName"
-            name="cityName"
-            label="What city and state did your pet going missing in?"
-            type="text"
-            control="input"
-            placeHolder="Ex. Los Angeles, CA"
-            required={true}
-            value={post.cityName}
-            onChange={handleInputChange}
-          />
-          <Input
-            id="title"
-            name="title"
-            label="Tell us a little bit about your pet"
-            type="text"
-            control="input"
-            placeHolder="Species, breed, color, size, etc."
-            required={true}
-            value={post.title}
-            onChange={handleInputChange}
-          />
-          <Input
-            id="content"
-            name="content"
-            label="Any more information that can help others"
-            control="textarea"
-            placeHolder=""
-            rows={10}
-            required={true}
-            value={post.content}
-            onChange={handleInputChange}
-          />
-          <Button design="submit" type="submit">
-            Submit
-          </Button>
-        </form>
+        <div className="new-post--container">
+          <form className="new-post--form" onSubmit={createPost}>
+            <Input
+              id="cityName"
+              name="cityName"
+              label="What city and state did your pet going missing in?"
+              type="text"
+              control="input"
+              placeHolder="Ex. Los Angeles, CA"
+              required={true}
+              value={post.cityName}
+              onChange={handleInputChange}
+            />
+            <Input
+              id="title"
+              name="title"
+              label="Tell us a little bit about your pet"
+              type="text"
+              control="input"
+              placeHolder="Species, breed, color, size, etc."
+              required={true}
+              value={post.title}
+              onChange={handleInputChange}
+            />
+            <Input
+              id="content"
+              name="content"
+              label="Any more information that can help others"
+              control="textarea"
+              placeHolder=""
+              rows={10}
+              required={true}
+              value={post.content}
+              onChange={handleInputChange}
+            />
+            <Button design="submit" type="submit">
+              Submit
+            </Button>
+          </form>
+        </div>
         <div className="post-preview--container">
           <div className="post-preview">
             <Post title={post.title} imageUrl={post.imageUrl} content={post.content} cityName={post.cityName}/>
