@@ -6,16 +6,19 @@ export default function Landing() {
   return (
     <>
       <div className="container">
-        <div>
-          <Link className="title" to="/">
-            <h1>Pet Search</h1>
+        <h1 className="title">
+          <Link to="/">
+            Pet Search
           </Link>
-        </div>
+        </h1>
         <div className="selection--container">
+          <h3>Welcome to Pet Search!</h3>
+          <p>If you are currently looking for your pet please create a new post listing:</p>
           <Button link="/post-lost-pet" design="lost">
             Post a Lost Pet
           </Button>
-          <Button link="/feed" design="feed">
+          <p>If you would like to see other lost pets or check a post you previously created:</p>
+          <Button link="/feed">
             Lost Pet Updates
           </Button>
         </div>

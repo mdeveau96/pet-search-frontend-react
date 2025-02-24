@@ -5,20 +5,20 @@
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #B57EDC;
+  background-color: #c5baff;
   cursor: pointer;
   color: #ffffffde;
   transition: background-color 0.25s;
 }
 
 .button:hover {
-  background-color: #B57EDCab;
+  background-color: #b57edcab;
   color: #ffffffde;
 }
 
 .button:active,
 .button:focus {
-  background-color: #B57EDC7e;
+  background-color: #b57edc7e;
   color: #ffffffde;
 }
 

@@ -7,10 +7,10 @@ label {
 .input {
   input {
     padding: 15px 20px;
-    border: none;
-    border-radius: 10px;
     font-size: medium;
     box-sizing: border-box;
+    border-radius: 10px;
+    border: none;
   }
 }
 

@@ -4,7 +4,7 @@ import "./Input.css";
 interface InputProps {
   id: string;
   name: string;
-  label: string;
+  label?: string;
   type?: string;
   rows?: number;
   control: string;

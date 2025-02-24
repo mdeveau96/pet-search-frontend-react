@@ -42,7 +42,6 @@ export default function Login() {
   return (
     <Auth>
       <form onSubmit={handleLoginAttempt} noValidate>
-        {error && <p>{error}</p>}
         <header className="login-header">
           <span>Pet Search</span>
         </header>
@@ -50,10 +49,9 @@ export default function Login() {
           <Input
             id="email"
             name="email"
-            label="Email"
             type="text"
             control="input"
-            placeHolder="Type your Email Address"
+            placeHolder="Email Address"
             required={true}
             value={loginData.email}
             onChange={handleChange}
@@ -63,15 +61,15 @@ export default function Login() {
           <Input
             id="password"
             name="password"
-            label="Password"
             type="password"
             control="input"
-            placeHolder="Type your Password"
+            placeHolder="Password"
             required={true}
             value={loginData.password}
             onChange={handleChange}
           />
         </div>
+        {error && <p className="error-message">{error}</p>}
         <div className="remember-forgot">
           <label className="remember-me" htmlFor="remember-me"><input className="remember-me" type="checkbox" id="remember-me"/>Remember Me?</label>
           <div className="password-reset">

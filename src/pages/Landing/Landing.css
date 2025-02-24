@@ -1,18 +1,22 @@
+.container {
+  display: block;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px -1px #121212;
+  background-color: #fbfbfb;
+  text-align: center;
+  color: #213547;
+}
+
 .title {
-  color: #ffffffde;
+  color: #c4d9ff;
 }
 
 .title:hover {
-  color: #ffffffde;
-}
-
-.container {
-  background-color: #242424;
-  padding: 20px;
-  width: fit-content;
-  border-radius: 10px;
+  color: #c4d9ff;
 }
 
 .selection--container {
+  width: 100%;
   place-content: center;
 }

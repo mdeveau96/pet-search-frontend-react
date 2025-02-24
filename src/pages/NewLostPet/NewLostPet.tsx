@@ -52,7 +52,7 @@ export default function NewLostPet() {
 
   return (
     <>
-      <div className="container">
+      <div className="lost-pet--container">
         <div className="new-post--container">
           <form className="new-post--form" onSubmit={createPost}>
             <Input
