@@ -1,8 +1,8 @@
 import { Link } from "react-router";
 import "./Button.css";
-import { ReactNode } from "react";
+import React, { JSX, ReactNode } from "react";
 
-interface ButtonProps {
+interface Props {
   link?: string;
   design?: string;
   mode?: string;
@@ -13,31 +13,24 @@ interface ButtonProps {
   children?: ReactNode;
 }
 
-export default function Button({
-  link,
-  design,
-  mode,
-  onClick,
-  disabled,
-  loading,
-  type,
-  children,
-}: ButtonProps) {
-  return !link ? (
+const Button: React.FC<Props> = (props: Props) : JSX.Element => {
+  return !props.link ? (
     <button
-      className={["button", `button--${design}`, `button--${mode}`].join(" ")}
-      onClick={onClick}
-      disabled={disabled ?? loading}
-      type={type}
+      className={["button", `button--${props.design}`, `button--${props.mode}`].join(" ")}
+      onClick={props.onClick}
+      disabled={props.disabled ?? props.loading}
+      type={props.type}
     >
-      {loading ? "Loading..." : children}
+      {props.loading ? "Loading..." : props.children}
     </button>
   ) : (
     <Link
-      className={["button", `button--${design}`, `button--${mode}`].join(" ")}
-      to={link}
+      className={["button", `button--${props.design}`, `button--${props.mode}`].join(" ")}
+      to={props.link}
     >
-      {children}
+      {props.children}
     </Link>
   );
 }
+
+export default Button;

@@ -41,3 +41,22 @@
   margin-top: 20px;
   width: 100%;
 }
+
+.button--post-actions {
+  background-color: inherit;
+}
+
+.button--flat {
+  position: relative;
+  border: none;
+  border-radius: 0;
+  background-color: inherit;
+  color: #979797;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.button--flat:hover,
+.button--flat:active {
+  background-color: #eaeaea;
+  color: #4a4a4a;
+}

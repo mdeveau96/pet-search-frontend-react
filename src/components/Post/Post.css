@@ -1,14 +1,41 @@
 .post--container {
-  padding: 20px;
+  width: 500px;
   border: 1px solid #5a5a5a;
   border-radius: 10px;
-  box-shadow: 0 2px 10px #121212;
+  background-color: white;
+  color: #4a4a4a;
+  overflow: hidden;
 }
+
+.post--header, .post--image, .post--content {
+  font-size: 18px;
+  padding: 4px 16px 4px 16px;
+}
+
+.post--content {
+  font-size: 14px;
+}
+
 hr {
   border: none;
   height: 1px;
-  color: #5a5a5a;
-  background-color: #5a5a5a;
+  background-color: #e7e7e7;
+  margin: 0;
+  padding: 0;
+}
+
+.post--actions {
+  display: flex;
+}
+
+.post--buttons {
+  width: 100%;
+  font-size: 14px;
+  place-content: center;
+}
+
+.post--stats {
+  padding-right: 16px;
 }
 
 .lost--status {

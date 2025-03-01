@@ -1,7 +1,7 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, JSX } from "react";
 import "./Input.css";
 
-interface InputProps {
+interface Props {
   id: string;
   name: string;
   label?: string;
@@ -15,59 +15,50 @@ interface InputProps {
   onChange: (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-export default function Input({
-  id,
-  name,
-  label,
-  type,
-  rows,
-  control,
-  placeHolder,
-  required,
-  valid,
-  onChange
-}: InputProps) {
+const Input: React.FC<Props> = (props: Props) : JSX.Element => {
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
     setInputValue(newValue);
-    onChange(event);
+    props.onChange(event);
   };
 
   const handleChangeTextArea = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value;
     setInputValue(newValue);
-    onChange(event);
+    props.onChange(event);
   };
 
   return (
     <div className="input">
-      {label && <label htmlFor={id}>{label}</label>}
-      {control === "input" && (
+      {props.label && <label htmlFor={props.id}>{props.label}</label>}
+      {props.control === "input" && (
         <input
-          className={[!valid ? "invalid" : "valid"].join(" ")}
-          type={type}
-          id={id}
-          name={name}
-          required={required}
+          className={[!props.valid ? "invalid" : "valid"].join(" ")}
+          type={props.type}
+          id={props.id}
+          name={props.name}
+          required={props.required}
           value={inputValue}
-          placeholder={placeHolder}
+          placeholder={props.placeHolder}
           onChange={handleChange}
         />
       )}
-      {control === "textarea" && (
+      {props.control === "textarea" && (
         <textarea
-          className={[!valid ? "invalid" : "valid"].join(" ")}
-          id={id}
-          name={name}
-          rows={rows}
-          required={required}
+          className={[!props.valid ? "invalid" : "valid"].join(" ")}
+          id={props.id}
+          name={props.name}
+          rows={props.rows}
+          required={props.required}
           value={inputValue}
-          placeholder={placeHolder}
+          placeholder={props.placeHolder}
           onChange={handleChangeTextArea}
         />
       )}
     </div>
   );
 }
+
+export default Input

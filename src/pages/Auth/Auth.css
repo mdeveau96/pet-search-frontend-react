@@ -1,12 +1,3 @@
-.auth-form {
-  width: 90%;
-  margin: auto;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 1px 6px -1px #121212;
-  background-color: white;
-}
-
 .error-message {
   color: red;
   font-weight: bold;
