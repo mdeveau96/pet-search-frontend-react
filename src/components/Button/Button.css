@@ -16,11 +16,11 @@
   color: #ffffffde;
 }
 
-.button:active,
+/* .button:active,
 .button:focus {
   background-color: #b57edc7e;
   color: #ffffffde;
-}
+} */
 
 .button--lost {
   background-color: #ff4b4b;
@@ -57,6 +57,10 @@
 
 .button--flat:hover,
 .button--flat:active {
-  background-color: #eaeaea;
-  color: #4a4a4a;
+  background-color: #f6f6f6;
+  color: #c5baff;
+}
+
+.selected {
+  color: #c5baff;
 }

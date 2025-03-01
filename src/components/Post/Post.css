@@ -26,12 +26,9 @@ hr {
 
 .post--actions {
   display: flex;
-}
-
-.post--buttons {
   width: 100%;
   font-size: 14px;
-  place-content: center;
+  place-content: center space-evenly;
 }
 
 .post--stats {

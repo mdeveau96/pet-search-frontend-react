@@ -19,3 +19,13 @@ input,
 textarea {
   width: 100%;
 }
+
+.submit-buttons {
+  display: flex;
+  margin-top: 10px;
+  place-content: center space-evenly;
+
+  button {
+    width: 150px;
+  }
+}

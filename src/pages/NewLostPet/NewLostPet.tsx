@@ -1,11 +1,12 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Form/Input/Input";
-import "./NewLostPet.css"
+import "./NewLostPet.css";
 import Post from "../../components/Post/Post";
 import Card from "../../components/Card/Card";
 
 interface postFormData {
+  petName: string;
   title: string;
   imageUrl: string;
   content: string;
@@ -19,17 +20,28 @@ interface PreviewProps {
 const PostPreview: React.FC<PreviewProps> = (props: PreviewProps) => {
   return (
     <>
-      <Post title={props.post.title} imageUrl={props.post.imageUrl} content={props.post.content} cityName={props.post.cityName} disableButtons={true}/>
-      <div>
-        <Button design="" type="button">Back</Button>
-        <Button design="" type="submit">Create Post</Button>
+      <Post
+        title={props.post.title}
+        imageUrl={props.post.imageUrl}
+        content={props.post.content}
+        cityName={props.post.cityName}
+        disableButtons={false}
+      />
+      <div className="submit-buttons">
+        <Button type="button">
+          Back
+        </Button>
+        <Button type="submit">
+          Create Post
+        </Button>
       </div>
     </>
-  )
-}
+  );
+};
 
 const NewLostPet: React.FC = () => {
   const [post, setPost] = useState<postFormData>({
+    petName: "",
     title: "",
     imageUrl: "",
     content: "",
@@ -38,23 +50,25 @@ const NewLostPet: React.FC = () => {
   const [showPostForm, setShowPostForm] = useState<boolean>(true);
   const [showPostPreview, setShowPostPreview] = useState<boolean>(false);
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
-    const {name, value } = e.target;
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
     setPost((prevData) => ({
       ...prevData,
       [name]: value,
     }));
-  }
+  };
 
   const onClick = () => {
-    setShowPostPreview(!showPostPreview)
-    setShowPostForm(!showPostForm)
-  }
+    setShowPostPreview(!showPostPreview);
+    setShowPostForm(!showPostForm);
+  };
 
   const createPost = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const newPost = post
-    console.log(newPost)
+    e.preventDefault();
+    const newPost = post;
+    console.log(newPost);
     try {
       // const response = await fetch("http://localhost:8080/feed/post", {
       //   method: "POST",
@@ -69,16 +83,27 @@ const NewLostPet: React.FC = () => {
       // }
       // const data: Post = await response.json() as Post;
     } catch (error) {
-      console.error('There was an error sending the POST request:', error);
+      console.error("There was an error sending the POST request:", error);
     }
-  }
+  };
 
   return (
     <>
       <Card>
-          <form className="new-post--form" onSubmit={createPost}>
-          {showPostForm && 
+        <form className="new-post--form" onSubmit={createPost}>
+          {showPostForm && (
             <>
+              <Input
+                id="petName"
+                name="petName"
+                label="What's your pet's name?"
+                type="text"
+                control="input"
+                placeHolder="Tell us your pet's name"
+                required={true}
+                value={post.petName}
+                onChange={handleInputChange}
+              />
               <Input
                 id="cityName"
                 name="cityName"
@@ -115,14 +140,17 @@ const NewLostPet: React.FC = () => {
               <Button design="submit" type="button" onClick={onClick}>
                 Preview
               </Button>
-            </>}
-            {showPostPreview && <div>
+            </>
+          )}
+          {showPostPreview && (
+            <div>
               <PostPreview post={post} />
-            </div>}
-          </form>
+            </div>
+          )}
+        </form>
       </Card>
     </>
   );
-}
+};
 
 export default NewLostPet;

@@ -6,6 +6,7 @@ interface Props {
   link?: string;
   design?: string;
   mode?: string;
+  selected?: boolean;
   onClick?: () => void;
   disabled?: boolean;
   loading?: boolean;
@@ -13,10 +14,15 @@ interface Props {
   children?: ReactNode;
 }
 
-const Button: React.FC<Props> = (props: Props) : JSX.Element => {
+const Button: React.FC<Props> = (props: Props): JSX.Element => {
   return !props.link ? (
     <button
-      className={["button", `button--${props.design}`, `button--${props.mode}`].join(" ")}
+      className={[
+        "button",
+        `button--${props.design}`,
+        `button--${props.mode}`,
+        `${props.selected ? "selected" : ""}`,
+      ].join(" ")}
       onClick={props.onClick}
       disabled={props.disabled ?? props.loading}
       type={props.type}
@@ -25,12 +31,17 @@ const Button: React.FC<Props> = (props: Props) : JSX.Element => {
     </button>
   ) : (
     <Link
-      className={["button", `button--${props.design}`, `button--${props.mode}`].join(" ")}
+      className={[
+        "button",
+        `button--${props.design}`,
+        `button--${props.mode}`,
+        `${props.selected ? "selected" : ""}`,
+      ].join(" ")}
       to={props.link}
     >
       {props.children}
     </Link>
   );
-}
+};
 
 export default Button;
